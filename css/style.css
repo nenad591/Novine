@@ -1,0 +1,189 @@
+@charset "UTF-8";
+body{
+	padding:0;
+	margin:0;
+	background: #615192;
+}
+a:link{
+	text-decoration: none;
+	color:#000159;
+}
+a:hover{
+	text-decoration: underscore;
+	color: #004459;
+	background: #04ceba;
+}
+a:visited{
+	text-decoration: none;
+	color:#000159;
+}
+a:active{
+	color:#1a0059;
+}
+
+#wrap{
+  width: 1000px;
+  margin: 0 auto;
+  background: #9F9FA1;
+
+}
+
+#header{
+  width: 100%;
+  background: #4286f4;
+  height: 70px;
+}
+#header section{
+  float: left;
+  margin-left: 20px;
+}
+#section-one{
+  color: #1454bc;
+  margin-right: 20px;
+}
+#section-two{
+  margin-top: 20px;
+}
+#header #section-three{
+  float:right;
+  padding: 0px;
+  margin-right: 10px;
+}
+#nav ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#nav ul li{
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+#nav ul li a{
+  display: block;
+  line-height: 70px;
+  padding:0 5px;
+
+}
+#nav ul li a:link{
+  text-decoration: none;
+  color: #002563;
+}
+#nav ul li a:hover{
+  background: #354054;
+  color: #565c66;
+}
+#nav ul li a:visited{
+  color: #002563;
+}
+#main{
+  padding: 10px;
+}
+.forme, .profil{
+	width: 500px;
+	margin:0 auto;
+	text-align: center;
+}
+.forme table{
+	margin: 0 auto;
+}
+.forme textarea{
+	float:right;
+	width: 92%;
+	height: 200px;
+}
+#users{
+	width: 100%;
+
+}
+#users table tr{
+}
+#users table tr td{
+	width: 16%;
+}
+.new{
+	width: 100%;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+.new h3{
+	text-align: center;
+	border-bottom: 1px solid black;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+.news{
+	border: 1px solid black;
+	text-align: left;
+	overflow: hidden;
+}
+.news h4{
+	padding: 10px 15px;
+	background: #e0ef0b;
+	margin-top: 0;
+}
+.news img{
+	width: 350px;
+	height: 200px;
+	text-align: center;
+}
+.news p{
+	margin: 20px 0;
+	padding: 15px;
+	word-wrap: break-word;
+	border-bottom: 1px solid rgb(109, 102, 69, 0.5);
+}
+.time{
+	float: left;
+	padding-left: 10px;
+	padding-bottom: 10px;
+}
+.autor{
+	float: right;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+.news footer{
+	clear: both;
+	text-align: center;
+	padding: 15px;
+	background: #d1ab04;
+}
+.comments{
+	margin-top: 10px;
+	width: 100%;
+	overflow: hidden;
+	border: 1px solid black;
+}
+.info{
+	width: 20%;
+	float: left;
+	padding: 10px;
+	border-right: 1px solid rgb(118, 120, 122, 0.5);
+}
+
+.comment{
+	float: left;
+	width: 70%;
+	padding:10px;
+	padding-left: 20px;
+	word-wrap: break-word;
+}
+
+
+//FOOTER
+#footer{
+	margin: 15px 0 0 0;
+
+}
+#footer p{
+	background:#9383C6;
+	color: #D2C4FF;
+	text-align: center;
+	padding: 15px;
+	margin: 0;
+}
+.clear{
+  clear:both;
+}
