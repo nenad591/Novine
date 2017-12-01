@@ -5,14 +5,16 @@ if(isset($_GET['s']) && !empty($_GET['s'])){
   $search = trim($search);
   $res = News::getLike($search);
   if(empty($res)){
-    display('Zeljeni sadrzaj nije pronadjen.');
+    display('Zeljeni sadrzaj nije pronadjen. <a href="index.php">Vrati se na pocetnu</a>');
   }
   foreach ($res as $key => $value) {
+    
     echo "<div class='new'>";
-      echo "<h3><a href='?s=". $value['c_name'] ."'>" . $value['c_name'] . "</a><h3>";
-      echo "<div class='news'>";
+          echo "<div class='news'>";
           echo "<h4>" . $value['title'] . "</h4>";
-          echo "<img src='' alt=''>";
+          if(!empty($value['image'])){
+            echo '<img src="data:image/jpeg;base64,'.base64_encode( $value['image'] ).'"/>';
+          }
           echo "<p>" . $value['content'] . "</p>";
           echo "<span class='time'>Vreme objave: " . $value['dateTime'] . "</span>";
           echo "<span class='autor'>Autor: " . $value['name'] . ' ' . $value['lastName'] . "</span>";
@@ -23,6 +25,10 @@ if(isset($_GET['s']) && !empty($_GET['s'])){
   return;
 }
 ?>
+
+<div id='demo'>
+
+</div>
 <h2>Najnovije vesti</h2>
 <?php
 $res = News::distinct();
@@ -36,7 +42,9 @@ foreach ($res as $key => $value) {
     echo "<h3><a href='?s=". $news['c_name'] ."'>" . $news['c_name'] . "</a><h3>";
     echo "<div class='news'>";
         echo "<h4>" . $news['title'] . "</h4>";
-        echo "<img src='' alt=''>";
+        if(!empty($value['image'])){
+          echo '<img src="data:image/jpeg;base64,'.base64_encode( $value['image'] ).'"/>';
+        }
         echo "<p>" . $news['content'] . "</p>";
         echo "<span class='time'>Vreme objave: " . $news['dateTime'] . "</span>";
         echo "<span class='autor'>Autor: " . $news['name'] . ' ' . $news['lastName'] . "</span>";

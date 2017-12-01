@@ -33,6 +33,12 @@ if(isset($_POST['pass_submit'])) {
     if($session->sessionExists('user_id')){
       $email = $session->getSession('email');
     }
+    if(!Checks::pass($newPass)){
+      display('Sifra mora minimum da sadrzi 6 karaktera.');
+      return;
+    }
+
+
     $pass = new ChangePass($newPass, $confirmPass, $email);
 
       ///neznademstonevrcenista????

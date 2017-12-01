@@ -35,17 +35,26 @@ class News{
 
   public function update($id){
     global $conn;
-    $q = $conn->prepare('UPDATE news SET title = :title, content = :content, dateTime = :dateTime, updateDate = :updateDate, category = :category, tags = :tags, img = :img WHERE news_id = :id');
-    $title = $q->bindParam('title', $this->title);
-    $content = $q->bindParam('content', $this->content);
-    $date = $q->bindParam('dateTime', $this->date);
-    $category = $q->bindParam('category', $this->category);
-    $tags = $q->bindParam('tags', $this->tags);
-    $img = $q->bindParam('img', $this->img);
-    $id = $q->bindParam('id', $id);
+    $q = $conn->prepare('UPDATE news SET title = :tit, content = :con, category = :cat, tags = :tag, image = :img WHERE news_id = :id');
+    $tit = $q->bindParam(':tit', $this->title);
+    $cot = $q->bindParam(':con', $this->content);
+    $cat = $q->bindParam(':cat', $this->category);
+    $tag = $q->bindParam(':tag', $this->tags);
+    $img = $q->bindParam('img', $this->image);
+    $newsId = $q->bindParam(':id', $id);
     $q->execute();
     return true;
   }
+
+  public static function getNews($id){
+    global $conn;
+    $q = $conn->prepare('SELECT title, content, tags, image,c_name FROM news JOIN category ON news.category = category.category_id WHERE news_id = :id');
+    $news_id = $q->bindParam('id', $id);
+    $q->execute();
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+    return $res;
+  }
+
 
   public static function getAll(){
     global $conn;
@@ -65,8 +74,10 @@ class News{
 
   public static function getOneFromAll($name){
     global $conn;
-    $q = $conn->prepare("SELECT news.news_id, news.title,news.content,news.dateTime, users.name, users.lastName, category.c_name  FROM news JOIN category ON news.category = category.category_id JOIN users ON news.user = users.user_id WHERE category.c_name = :name ORDER BY news_id DESC");
-    $cat = $q->bindParam(':name', $name);
+    $q = $conn->prepare("SELECT news.news_id, news.title,news.content,news.dateTime, users.name, users.lastName, category.c_name  FROM news
+      JOIN category ON news.category = category.category_id JOIN users ON news.user = users.user_id
+       WHERE category.c_name = :name ORDER BY news.dateTime DESC");
+    $cat = $q->bindParam('name', $name);
     $q->execute();
     $res = $q->fetch(PDO::FETCH_ASSOC);
     return $res;
@@ -75,7 +86,7 @@ class News{
   public static function getOneNews($id){
     global $conn;
     $q = $conn->prepare(
-      "SELECT news.news_id, news.title,news.content,news.dateTime, users.name, users.lastName, category.c_name
+      "SELECT news.news_id, news.title,news.content,news.dateTime,news.tags, users.name, users.lastName, category.c_name
        FROM news JOIN category
        ON news.category = category.category_id
        JOIN users ON news.user = users.user_id WHERE news.news_id = :id"
@@ -88,7 +99,7 @@ class News{
 
   public static function getLike($name){
     global $conn;
-    $q = $conn->prepare("SELECT news.news_id, news.title,news.content,news.dateTime, users.name, users.lastName, category.c_name  FROM news JOIN category ON news.category = category.category_id JOIN users ON news.user = users.user_id WHERE news.title LIKE :name OR news.content LIKE :name OR category.c_name LIKE :name");
+    $q = $conn->prepare("SELECT news.news_id, news.title,news.content,news.dateTime, users.name, users.lastName, category.c_name  FROM news JOIN category ON news.category = category.category_id JOIN users ON news.user = users.user_id WHERE news.title LIKE :name OR news.content LIKE :name OR category.c_name LIKE :name OR news.tags LIKE :name ORDER BY news.news_id DESC");
     $q->execute(array(':name' => '%'.$name.'%'));
     $res = $q->fetchAll(PDO::FETCH_ASSOC);
     return $res;

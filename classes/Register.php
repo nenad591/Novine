@@ -31,6 +31,7 @@ class Register{
     $gender = $q->bindParam(':gender', $this->gender);
     $token = $q->bindParam(':token', $this->token);
     $q->execute();
+    return true;
   }
   public function existsEmail(){
     global $conn;

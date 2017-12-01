@@ -8,12 +8,20 @@ if(isset($_GET['nid']) && !empty($_GET['nid'])){
     if(empty($res)){
       display('Nepostojeca vest. <a href="index.php">Odaberi vest?</a>');
     }else{
+      if($session->sessionExists('user_id')){
+        if($session->getSession('level') == 'admin' || $session->getSession('level') == 'superadmin') {
+          echo '<a href="?p=news&id='.$res['news_id'].'">Izmeni post</a>';
+        }
+      }
       echo "<div class='new'>";
         echo "<div class='news'>";
             echo "<h4>" . $res['title'] . "</h4>";
             echo "<img src='' alt=''>";
             echo "<p>" . $res['content'] . "</p>";
-            echo "<span class='time'>Vreme objave: " . $res['dateTime'] . "</span>";
+            echo "<span class='time'>Vreme objave: " . $res['dateTime'] . "</span>&nbsp;<b>|</b>&nbsp;";
+            if(!empty($res['tags'])){
+            echo "<span>Tagovi: ".$res['tags']."</span>";
+              }
             echo "<span class='autor'>Autor: " . $res['name'] . ' ' . $res['lastName'] . "</span>";
         echo "</div>";
       echo "</div>";
@@ -47,12 +55,20 @@ if(empty($comments)){
   display('Trenutno nema komentara, budi prvi!', 'green');
   return;
 }
+include_once 'app/deleteComment.php';
 foreach ($comments as $key => $value):
 ?>
 <div class="comments">
   <div class="info">
     <p><?php echo $value['name'] . ' '. $value['lastName']; ?></p>
     <p><?php echo $value['dateComment']; ?></p>
+    <?php
+    if($session->sessionExists('user_id')){
+      if($session->getSession('user_id') == $value['user_id'] || $session->getSession('level') == 'admin' || $session->getSession('level') == 'superadmin'){
+        echo '<a href="?p=comment&nid='. $_GET['nid'] .'&idc='.$value['comment_id'].'">Obrisi komentar.</a>';
+      }
+    }
+    ?>
   </div>
 
   <div class="comment">

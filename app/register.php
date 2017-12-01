@@ -24,7 +24,7 @@ if(isset($_POST['rg_submit'])){
     }
     //ako je neko pokusao da se registuje (da me predje) a nije uneo podatke samo da se prekine izvrsavanje
     if(!Checks::pass($pass)){
-      display('Sifra mora da srdzi minimum jedno veliko slovo,jedno malo i jedan broj.');
+      display('Sifra mora minimum da sadrzi 6 karaktera.');
       return;
     }
     //sifra je ok sad se kriptuje..
@@ -44,7 +44,7 @@ if(isset($_POST['rg_submit'])){
     //ako ovde vrati 1 znaci ima vec email
     if($user->existsEmail()){
       //ako nema izvrsiti registrovanje
-      if(!$user->insert()){
+      if($user->insert()){
         display('Uspesno ste se registrovali.<a href="?p=login">Prijavite se</a>', '#04ff00');
         //posto se uspesno registruje mogo bi da se posalje token na email da se proveri dali je to zaista to taj korisnik..
       }else{

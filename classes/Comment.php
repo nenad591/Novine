@@ -24,13 +24,26 @@ class Comment{
      return true;
    }
 
-   public static function deleteComment(){
-     
+   public static function deleteComment($id){
+     global $conn;
+     $q = $conn->prepare('DELETE FROM comments WHERE comment_id = :idc');
+     $comment_id = $q->bindParam('idc', $id);
+     $q->execute();
+     return true;
    }
+
+   public static function checkUser($id){
+    global $conn;
+    $q = $conn->prepare('SELECT user_id FROM comments WHERE comment_id = :id');
+    $commentId = $q->bindParam('id', $id);
+    $q->execute();
+    $res = $q->fetch(PDO::FETCH_ASSOC);
+    return $res;
+  }
 
    public static function getAllComments($id){
      global $conn;
-     $q = $conn->prepare("SELECT users.user_id, users.name, users.lastName,comments.comment, comments.dateComment FROM comments JOIN users ON comments.user_id = users.user_id  JOIN news ON comments.news_id = news.news_id WHERE news.news_id = :news_id ORDER BY comments.comment_id DESC");
+     $q = $conn->prepare("SELECT users.user_id, users.name, users.lastName,comments.comment_id, comments.comment, comments.dateComment FROM comments JOIN users ON comments.user_id = users.user_id  JOIN news ON comments.news_id = news.news_id WHERE news.news_id = :news_id ORDER BY comments.comment_id DESC");
      $newsId = $q->bindParam(':news_id',$id);
      $q->execute();
      $res = $q->fetchAll(PDO::FETCH_ASSOC);

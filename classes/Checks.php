@@ -19,10 +19,7 @@ class Checks
         }
     }
     public static function pass($pass){
-      $uppercase = preg_match('@[A-Z]@', $pass);
-      $lowercase = preg_match('@[a-z]@', $pass);
-      $number    = preg_match('@[0-9]@', $pass);
-      if(!$uppercase || !$lowercase || !$number || strlen($pass) < 8) {
+      if(strlen($pass) >= 6) {
         return true;
       }
     }

@@ -92,15 +92,20 @@ a:active{
 	width: 92%;
 	height: 200px;
 }
-#users{
-	width: 100%;
+.users{
+	overflow: hidden;
+}
+.users ul{
+	list-style: none;
+}
+.users ul li{
+	float: left;
+	padding: 5px 0;
+	margin: 0;
+	border: 1px solid black;
+	width: 185px;
+}
 
-}
-#users table tr{
-}
-#users table tr td{
-	width: 16%;
-}
 .new{
 	width: 100%;
 	overflow: hidden;

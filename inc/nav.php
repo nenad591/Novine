@@ -7,7 +7,7 @@
     <section id='section-two'>
       <!--Pretraga novosti po tagu ili kategoriji-->
       <form>
-        <input type="text" name="s" placeholder="Unesite zeljeni naslov,sadrzaj...">
+        <input type="text" name="s" onchange="ajax(this.value)" placeholder="Unesite zeljeni naslov,sadrzaj...">
         <input type="submit" value="Pretrazi">
       </form>
     </section>

@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['comment_submit'])){
   if(!$session->sessionExists('user_id')){
-    display('Morate da se prijavite kako biste komentarisali. <a href="?=login">Prijavi se.</a>');
+    display('Morate da se prijavite kako biste komentarisali. <a href="?p=login">Prijavi se.</a>');
     return;
   }
   if(Checks::iE($_POST['comment']) && Checks::iE($_POST['news_id'])){

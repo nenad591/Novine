@@ -19,6 +19,8 @@ if(isset($_POST['n_submit'])) {
     $tags = trim($tags);
 
     //ako polje za sliku nije prazno, proverava se format, u slucajnom slika je null..
+    //IZMENITI SLIKU....
+
     if($_FILES['n_img']['size'] != 0){
       $img = addslashes(file_get_contents($_FILES['n_img']['tmp_name']));
       $image = $_FILES['n_img'];

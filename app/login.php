@@ -9,11 +9,7 @@ if(isset($_POST['lg_submit'])){
       display('E-mail nije validan.');
       return;
     }
-    //Provera dal sifra odgovara jedno veliko jedno malo slovo i broj.. cisto onako :D
-    if(!Checks::pass($pass)){
-      display('Sifra mora da srdzi minimum jedno veliko slovo,jedno malo i jedan broj.');
-      return;
-    }
+
     //pass dobar sad kriptovanje :D
     $email = trim($email);
     $email = strtolower($email);

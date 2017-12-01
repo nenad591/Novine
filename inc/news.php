@@ -5,6 +5,7 @@ if(!$session->sessionExists('user_id') && !$session->sessionExists('lever')){
 if($session->getSession('level') == 'user'){
     header('Location: index.php');
 }
+include_once 'app/updateNews.php';
 include_once 'app/news.php';
 ?>
 <div class="forme">
@@ -13,13 +14,13 @@ include_once 'app/news.php';
     <table>
       <tr>
         <td><label for='title'>Naslov*:</label></td>
-        <td><input type="text" name="n_title" id='title'></td>
+        <td><input type="text" name="n_title" id='title' value="<?=$uTitle?>"></td>
       </tr>
       <tr>
         <td><label for="content">Sadrzaj*:</label></td>
       </tr>
       <tr>
-        <td colspan="2"><textarea name='n_content' id='content'></textarea></td>
+        <td colspan="2"><textarea name='n_content' id='content'><?=$uContent?></textarea></td>
       </tr>
       <tr>
         <td><label for='category'>Kategorije*:</label></td>
@@ -28,12 +29,12 @@ include_once 'app/news.php';
           <?php
           $categorys = Category::getCategory();
           foreach ($categorys as $k => $v){
-            if($ccname == $v['name']){
+            if($ccname == $v['c_name']){
               $selected = 'selected';
             }else{
               $selected = '';
             }
-            echo "<option value='{$v['category_id']}' {$selected}>{$v['name']}</option>";
+            echo "<option value='{$v['category_id']}' {$selected}>{$v['c_name']}</option>";
           }
           ?>
         </select>
@@ -41,15 +42,16 @@ include_once 'app/news.php';
       </tr>
       <tr>
         <td><label for="tags">Tagovi:</label</td>
-        <td><input type="text" name="n_tags" id="tags"></td>
+        <td><input type="text" name="n_tags" id="tags" value='<?=$uTags?>'></td>
       </tr>
       <tr>
         <td><label for="img">Slika:</label></td>
       </tr>
       <tr>
-        <td colspan="2"><input type='file' name='n_img' id="img"></td>
+        <td colspan="2"><input type='file' name='n_img' id="img" value='<?=$uImage?>'></td>
       </tr>
     </table>
     <input type="submit" name="n_submit" value="Dodaj vest">
+    <input type="submit" name="u_submit" value="Izmeni vest">
   </form>
 </div>

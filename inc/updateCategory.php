@@ -24,7 +24,7 @@ include_once 'app/updateCategory.php';
       <tr>
         <td><label for='category'>Kategorije:</lable></td>
         <td>
-          <select name='cc_category' onchange="if(this.value == -1) return; window.location.href='?p=categorys&c='+this.value">
+          <select name='cc_category' onchange="if(this.value == -1) return; window.location.href='?p=updateCategory&c='+this.value">
             <option value='-1'>Izaberi...</option>
           <?php
             $categorys = Category::getCategory();
