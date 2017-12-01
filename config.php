@@ -3,8 +3,8 @@
 define('DBHOST', 'localhost');
 define('DBNAME', 'novine');
 define('DBUSER', 'root');
-define('DBPASS', 'nenad.0159');
-//KOnstanta za SO KRIPTVANJE ..
+define('DBPASS', '');
+
 spl_autoload_register(function ($class_name) {
     require_once 'classes/' . $class_name . '.php';
 });
