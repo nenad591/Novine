@@ -38,6 +38,7 @@ class News{
     $category_id = $q->bindParam('category_id', $this->category_id);
     $tags = $q->bindParam('tags', $this->tags);
     $news_id = $q->bindParam('id', $id);
+    $q->execute();
     return true;
   }
 
