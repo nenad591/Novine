@@ -33,12 +33,13 @@ class News{
    public function update($id){
     global $conn;
     $q = $conn->prepare('UPDATE news SET title = :title, content = :content, category_id = :category_id,tags = :tags WHERE news_id = :id');
-    $title = $q->bindParam('titile', $this->title);
-    $content = $q->bindParam('content', $this->content);
-    $category_id = $q->bindParam('category_id', $this->category_id);
-    $tags = $q->bindParam('tags', $this->tags);
-    $news_id = $q->bindParam('id', $id);
-    $q->execute();
+     $q->execute(array(
+        ":title" => $this->title,
+        ":content" => $this->content,
+        ":category_id" => $this->category,
+        ":tags" => $this->tags,
+        "newsId" => $id
+      ));
     return true;
   }
 
