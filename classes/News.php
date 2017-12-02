@@ -37,7 +37,6 @@ class News{
     $cot = $q->bindParam(':con', $this->content);
     $cat = $q->bindParam(':cat', $this->category);
     $tag = $q->bindParam(':tag', $this->tags);
-    $img = $q->bindParam('img', $this->image);
     $newsId = $q->bindParam(':id', $id);
     $q->execute();
     return true;
