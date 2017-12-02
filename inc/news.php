@@ -29,7 +29,7 @@ include_once 'app/news.php';
           <?php
           $categorys = Category::getCategory();
           foreach ($categorys as $k => $v){
-            if($ccname == $v['c_name']){
+            if($post['c_name'] == $v['c_name']){
               $selected = 'selected';
             }else{
               $selected = '';
