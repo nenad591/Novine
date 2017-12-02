@@ -78,8 +78,4 @@ foreach ($comments as $key => $value):
 
 <?php endforeach; ?>
 
-
-
-
-
-<!-- OVDE CE DA IDU KOMENTARI -->
+<!-- OVDE IDU KOMENTARI -->

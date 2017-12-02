@@ -44,12 +44,6 @@ include_once 'app/news.php';
         <td><label for="tags">Tagovi:</label</td>
         <td><input type="text" name="n_tags" id="tags" value='<?=$uTags?>'></td>
       </tr>
-      <tr>
-        <td><label for="img">Slika:</label></td>
-      </tr>
-      <tr>
-        <td colspan="2"><input type='file' name='n_img' id="img" value='<?=$uImage?>'></td>
-      </tr>
     </table>
     <input type="submit" name="n_submit" value="Dodaj vest">
     <input type="submit" name="u_submit" value="Izmeni vest">

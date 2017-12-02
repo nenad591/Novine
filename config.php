@@ -1,7 +1,7 @@
 <?php
 //KOnstante, pristup za bazu podataka
 define('DBHOST', 'localhost');
-define('DBNAME', 'novine');
+define('DBNAME', 'novinarnica');
 define('DBUSER', 'root');
 define('DBPASS', 'nenad.0159');
 //KOnstanta za SO KRIPTVANJE ..

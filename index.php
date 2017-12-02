@@ -1,5 +1,4 @@
 <?php
-header('Content-type: image/jpeg');
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 require_once 'config.php';
@@ -25,10 +24,10 @@ $session = new Session();
           if (file_exists('inc/' . $_GET['p'] . '.php')) {
             include_once 'inc/' . $_GET['p'] . '.php';
           }else{
-            include_once 'inc/pocetna.php';
+            include_once 'inc/index.php';
           }
         }else{
-          include_once 'inc/pocetna.php';
+          include_once 'inc/index.php';
         }?>
       </div>
       <?php
